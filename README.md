@@ -1,6 +1,6 @@
 # CGRA 2020/2021
 
-## Group T0xG0y
+## Group T02G04
 | Name             | Number    | E-Mail             |
 | ---------------- | --------- | ------------------ |
 | Mariana Monteiro | 202003480 |up202003480@fe.up.pt|
