@@ -3,7 +3,7 @@
 ## Group T0xG0y
 | Name             | Number    | E-Mail             |
 | ---------------- | --------- | ------------------ |
-| John Doe         | 201901010 | ...                |
-| Jane Doe         | 201901011 | ...                |
+| Mariana Monteiro | 202003480 |up202003480@fe.up.pt|
+| Vasco Gomes      | 201906617 |up201906617@fe.up.pt|
 
 ----
