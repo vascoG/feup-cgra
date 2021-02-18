@@ -1,10 +1,8 @@
 # CGRA 2020/2021
 
-## Group T0xG0y
+## Group T02G04
 
 ## TP 1 Notes
 
-(add your main observations/remarks about your experiments here, in a bulleted list, and remove this line. Some examples below)
-
-- In exercise 1 we observed X
-- In exercise 2 we had difficulties in Y
+- Não sentimos dificuldade na resolução dos 2 exercícios.
+- No exercício 2, uma vez que o triângulo grande sobrepõe-se ao pequeno, decidimos implementar as checkboxes para controlar a visibilidade dos triângulos de modo a visualizar cada um individualmente.
