@@ -1,7 +1,9 @@
 import { CGFscene, CGFcamera, CGFaxis } from "../lib/CGF.js";
 import { MyDiamond } from "./MyDiamond.js";
-
-
+import { MyTriangleBig } from "./MyTriangleBig.js";
+import { MyTriangle } from "./MyTriangle.js";
+import { MyParallelogram } from "./MyParallelogram.js";
+import { MyTriangleSmall } from "./MyTriangleSmall.js";
 /**
  * MyScene
  * @constructor
@@ -27,11 +29,13 @@ export class MyScene extends CGFscene {
     //Initialize scene objects
     this.axis = new CGFaxis(this);
     this.diamond = new MyDiamond(this);
-
+    this.triangleBig = new MyTriangleBig(this);
+    this.triangle = new MyTriangle(this);
+    this.parallelogram = new MyParallelogram(this);
+    this.triangleSmall = new MyTriangleSmall(this);
 
     //Objects connected to MyInterface
     this.displayAxis = true;
-    this.displayDiamond=true;
     this.scaleFactor = 1;
   }
   initLights() {
@@ -109,11 +113,42 @@ export class MyScene extends CGFscene {
         0, 0, 1, 0,
         0, 2, 0, 1,
     ];
+    this.pushMatrix();
     this.multMatrix(mat2);
     this.multMatrix(mat);
 
-    if(this.displayDiamond) this.diamond.display();
-
+   this.diamond.display();
+   this.popMatrix();
+   this.pushMatrix();
+   this.translate(-0.866,-0.5,0); // x:1*sen(-60) (vertice do diamond), y:-1*cos(-60)
+   this.rotate(-90*Math.PI/180,0,0,1);
+   this.triangleBig.display();
+   this.popMatrix();
+   this.pushMatrix();
+   this.translate(1.134,-2.5,0);//2+(-0.866)
+   this.rotate(90*Math.PI/180,0,0,1);
+   this.triangleBig.display();
+   this.popMatrix();
+   this.pushMatrix();
+   this.translate(1.134,-4.5,0);
+   this.triangle.display();
+   this.popMatrix();
+   this.pushMatrix();
+   this.translate(-0.866,1.5,0);
+   this.scale(-1,1,1);
+   this.rotate(-60*Math.PI/180,0,0,1);
+   this.parallelogram.display();
+   this.popMatrix();
+   this.pushMatrix();
+   this.translate(-0.68,3.8,0);
+   this.rotate(100*Math.PI/180,0,0,1);
+   this.triangleSmall.display();
+   this.popMatrix();
+   this.pushMatrix();
+   this.translate(-1.4,2.2,0);
+   this.rotate(30*Math.PI/180,0,0,1);
+   this.triangleSmall.display();
+   this.popMatrix();
     // ---- END Primitive drawing section
   }
 }

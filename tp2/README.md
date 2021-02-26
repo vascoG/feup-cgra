@@ -1,10 +1,7 @@
 # CGRA 2020/2021
 
-## Group T0xG0y
+## Group T02G04
 
 ## TP 2 Notes
 
-(add your main observations/remarks about your experiments here, in a bulleted list, and remove this line. Some examples below)
-
-- In exercise 1 we observed X
-- In exercise 2 we had difficulties in Y
+- No exercício 2.2 sentimos dificuldade em definir vértices de algumas figuras, uma vez que, a origem do nosso Tangram era no centro de uma figura e não num vértice.
