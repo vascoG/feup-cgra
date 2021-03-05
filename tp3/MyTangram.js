@@ -18,6 +18,22 @@ export class MyTangram extends CGFobject {
     this.parallelogram = new MyParallelogram(this.scene);
     this.triangleSmall = new MyTriangleSmall(this.scene);
 	}
+    enableNormalViz(){
+    this.diamond.enableNormalViz();
+    this.triangle.enableNormalViz();
+    this.triangleBig.enableNormalViz();
+    this.triangleSmall.enableNormalViz();
+    this.parallelogram.enableNormalViz();
+    }
+    disableNormalViz(){
+    this.diamond.disableNormalViz();
+    this.triangle.disableNormalViz();
+    this.triangleBig.disableNormalViz();
+    this.triangleSmall.disableNormalViz();
+    this.parallelogram.disableNormalViz();
+    }
+
+
 	display(){
 		var angle = Math.PI * -60 / 180;
     var mat = 

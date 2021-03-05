@@ -16,7 +16,11 @@ export class MyTriangleSmall extends CGFobject {
 			0, 1, 0,	//1
 			1, 0, 0,	//2
 		];
-
+		this.normals = [
+			0, 0, 1,	//0
+			0, 0, 1,	//1
+			0, 0, 1,	//2
+		];
 		//Counter-clockwise reference of vertices
 		this.indices = [
 			2, 1, 0,
