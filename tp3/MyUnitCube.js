@@ -71,14 +71,14 @@ export class MyUnitCube extends CGFobject {
 			2,3,0,
             4,7,6,
             6,5,4,
-            2,1,5,
-            5,6,2,
-            3,7,4,
-            4,0,3,
-            3,2,6,
-            6,7,3,
-            0,4,5,
-            5,1,0,
+            10,9,13,
+            13,14,10,
+            11,15,12,
+            12,8,11,
+            19,18,22,
+            22,23,19,
+            16,20,21,
+            21,17,16,
 		];
 
 		//The defined indices (and corresponding vertices)
