@@ -27,6 +27,7 @@ export class MyScene extends CGFscene {
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         this.quad = new MyQuad(this);
+        
 
         //------ Applied Material
         this.quadMaterial = new CGFappearance(this);
@@ -46,6 +47,8 @@ export class MyScene extends CGFscene {
 
         //-------Objects connected to MyInterface
         this.displayAxis = true;
+        this.displayMyQuad = true;
+        this.displayQuadMaterial = true;
         this.scaleFactor = 5;
         this.selectedTexture = -1;        
         this.wrapS = 0;
@@ -109,22 +112,22 @@ export class MyScene extends CGFscene {
         // Draw axis
         if (this.displayAxis)
             this.axis.display();
-
+        
         this.setDefaultAppearance();
 
         this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
 
         // ---- BEGIN Primitive drawing section
-
-        this.quadMaterial.apply();
+        if(this.displayQuadMaterial)
+            this.quadMaterial.apply();
 
         // Default texture filtering in WebCGF is LINEAR. 
         // Uncomment next line for NEAREST when magnifying, or 
         // add a checkbox in the GUI to alternate in real time
         
         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
-
-        this.quad.display();
+        if(this.displayMyQuad)
+            this.quad.display();
 
         // ---- END Primitive drawing section
     }
