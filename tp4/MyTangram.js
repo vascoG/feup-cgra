@@ -63,6 +63,16 @@ export class MyTangram extends CGFobject {
     this.yellow.setDiffuse(1, 1, 0, 1.0);
     this.yellow.setSpecular(1, 1, 1, 1.0);
     this.yellow.setShininess(10.0);
+
+    //------ Applied Material
+    this.diamondMaterial = new CGFappearance(this.scene);
+    this.diamondMaterial.setAmbient(0.1, 0.1, 0.1, 1);
+    this.diamondMaterial.setDiffuse(0.9, 0.9, 0.9, 1);
+    this.diamondMaterial.setSpecular(0.1, 0.1, 0.1, 1);
+    this.diamondMaterial.setShininess(10.0);
+    this.diamondMaterial.loadTexture('images/tangram.png');
+    this.diamondMaterial.setTextureWrap('REPEAT', 'REPEAT');
+
     }
 
     enableNormalViz(){
@@ -100,7 +110,8 @@ export class MyTangram extends CGFobject {
    this.scene.pushMatrix();
    this.scene.multMatrix(mat2);
    this.scene.multMatrix(mat);
-   this.scene.customMaterial.apply();
+   //this.scene.customMaterial.apply();
+   this.scene.diamondMaterial.apply();
    //this.green.apply();
    this.diamond.display();
    this.scene.popMatrix();
