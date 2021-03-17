@@ -39,6 +39,15 @@ export class MyParallelogram extends CGFobject {
             3, 1, 0,
             3, 2, 1,
 		];
+		 this.texCoords=[
+            1, 1,
+            0.75, 0.75,
+            0.75, 1,
+            0.5, 0.75,
+            0.5, 1,
+            0.25, 0.75,
+        ];
+
 
 		//The defined indices (and corresponding vertices)
 		//will be read in groups of three to draw triangles

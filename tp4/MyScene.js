@@ -50,7 +50,7 @@ export class MyScene extends CGFscene {
         this.displayAxis = true;
         this.displayMyQuad = true;
         this.displayQuadMaterial = true;
-        this.scaleFactor = 5;
+        this.scaleFactor = 2.5;
         this.selectedTexture = -1;        
         this.wrapS = 0;
         this.wrapT = 0;
