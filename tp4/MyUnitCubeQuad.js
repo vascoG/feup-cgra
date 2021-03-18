@@ -40,6 +40,7 @@ export class MyUnitCubeQuad extends CGFobject {
 	display(){
 
    this.app2.apply();
+   this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
    this.scene.pushMatrix();
    this.scene.translate(0,0,0.5);
    this.quad.display();    
@@ -63,12 +64,16 @@ export class MyUnitCubeQuad extends CGFobject {
    this.scene.translate(0,-0.5,0);
    this.scene.rotate(90*Math.PI/180,1,0,0);
    this.app3.apply();
+   this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
+
    this.quad.display();
    this.scene.popMatrix();
    this.scene.pushMatrix();
    this.scene.translate(0,0.5,0);
    this.scene.rotate(-90*Math.PI/180,1,0,0);
    this.app1.apply();
+   this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
+
    this.quad.display();
    this.scene.popMatrix();
    }
