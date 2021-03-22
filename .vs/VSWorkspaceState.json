@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\tp4"
+    "\\tp5",
+    "\\tp5\\shaders"
   ],
-  "SelectedNode": "\\tp4\\MyTangram.js",
+  "SelectedNode": "\\tp5\\shaders\\texture3anim.frag",
   "PreviewInSolutionExplorer": false
 }
