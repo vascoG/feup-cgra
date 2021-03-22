@@ -26,6 +26,8 @@ export class MyInterface extends CGFinterface {
 
 		this.gui.add(this.scene, 'scaleFactor',-50,50).onChange(this.scene.onScaleFactorChanged.bind(this.scene));
 
+		this.gui.add(this.scene, 'amplitude', 0, 10).onChange(this.scene.onSpeedChanged.bind(this.scene));
+
 		return true;
 	};
 }
