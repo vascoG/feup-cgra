@@ -15,8 +15,5 @@ void main() {
 	vec4 color = texture2D(uSampler1, move);
 	vec4 filter = texture2D(uSampler2, move);
 
-	/*color.r = color.r - color.r*filter.b*0.2;
-	color.g = color.g - color.g*filter.b*0.2;
-	color.b = color.b - color.b*filter.b*0.2;*/
 	gl_FragColor = color;
 }
