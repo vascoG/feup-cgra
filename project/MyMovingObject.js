@@ -8,6 +8,16 @@ export class MyMovingObject extends CGFobject {
 	constructor(scene) {
 		super(scene);
 		this.initBuffers();
+		this.velocity=0;
+		this.angle=0;
+		this.x=0;
+		this.y=0;
+		this.z=0;
+	}
+	update(){
+		this.x+=this.velocity*Math.sin(this.angle*Math.PI/180);
+		this.z+=this.velocity*Math.cos(this.angle*Math.PI/180);
+		
 	}
 	
 	initBuffers() {

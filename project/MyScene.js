@@ -10,6 +10,25 @@ export class MyScene extends CGFscene {
     constructor() {
         super();
     }
+
+    checkKeys(){
+        var text ="Keys pressed: ";
+        var keysPressed=false;
+         // Check for key codes e.g. in https://keycode.info/
+         if(this.gui.isKeyPressed("KeyW")){
+             text+=" W ";
+             keysPressed=true;
+         }
+
+         if(this.gui.isKeyPressed("KeyS")){
+            text+=" S ";
+            keysPressed=true;
+        }
+        if(keysPressed)
+            console.log(text);
+        
+    }
+
     init(application) {
         super.init(application);
         this.initCameras();
@@ -70,6 +89,7 @@ export class MyScene extends CGFscene {
     // called periodically (as per setUpdatePeriod() in init())
     update(t){
         //To be done...
+        this.checkKeys();
     }
 
     display() {
@@ -91,10 +111,12 @@ export class MyScene extends CGFscene {
 
         this.sphereAppearance.apply();
         // ---- BEGIN Primitive drawing section
+        this.pushMatrix();
+        this.translate(this.mymovingobject.x,this.mymovingobject.y,this.mymovingobject.z);
         this.mymovingobject.display();
+        this.popMatrix();
         //This sphere does not have defined texture coordinates
-       // this.incompleteSphere.display();
-
+        // this.incompleteSphere.display();
         // ---- END Primitive drawing section
     }
 }
