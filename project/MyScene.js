@@ -16,14 +16,30 @@ export class MyScene extends CGFscene {
         var keysPressed=false;
          // Check for key codes e.g. in https://keycode.info/
          if(this.gui.isKeyPressed("KeyW")){
+             this.mymovingobject.accelerate(0.1);
              text+=" W ";
              keysPressed=true;
          }
-
          if(this.gui.isKeyPressed("KeyS")){
+            this.mymovingobject.accelerate(-0.1);
             text+=" S ";
             keysPressed=true;
         }
+        if(this.gui.isKeyPressed("KeyA")){
+            this.mymovingobject.turn(10);
+            text+=" A ";
+            keysPressed=true;
+        }
+        if(this.gui.isKeyPressed("KeyD")){
+           this.mymovingobject.turn(-10);
+           text+=" D ";
+           keysPressed=true;
+       }
+       if(this.gui.isKeyPressed("KeyR")){
+        this.mymovingobject.reset();
+        text+=" R ";
+        keysPressed=true;
+    }
         if(keysPressed)
             console.log(text);
         
@@ -90,6 +106,7 @@ export class MyScene extends CGFscene {
     update(t){
         //To be done...
         this.checkKeys();
+        this.mymovingobject.update();
     }
 
     display() {
