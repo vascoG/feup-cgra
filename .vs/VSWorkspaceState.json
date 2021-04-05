@@ -1,9 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\tp5",
-    "\\tp5\\shaders"
+    "\\project",
+    "\\project\\images",
+    "\\project\\images\\new",
+    "\\project\\images\\test_cubemap",
+    "\\tp4"
   ],
-  "SelectedNode": "\\tp5\\shaders\\water.vert",
+  "SelectedNode": "\\project\\MyInterface.js",
   "PreviewInSolutionExplorer": false
 }

@@ -1,6 +1,7 @@
 import { CGFscene, CGFcamera, CGFaxis, CGFappearance } from "../lib/CGF.js";
 import { MySphere } from "./MySphere.js";
 import { MyMovingObject } from "./MyMovingObject.js";
+import {MyCubeMap} from "./MyCubeMap.js";
 
 /**
 * MyScene
@@ -66,6 +67,8 @@ export class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.incompleteSphere = new MySphere(this, 16, 8);
         this.mymovingobject = new MyMovingObject(this);
+        this.mycubemap1 = new MyCubeMap(this,'images/demo_cubemap/top.png','images/demo_cubemap/bottom.png','images/demo_cubemap/left.png','images/demo_cubemap/right.png','images/demo_cubemap/front.png','images/demo_cubemap/back.png');
+        this.mycubemap = new MyCubeMap(this,'images/new/top.png','images/new/bottom.png','images/new/left.png','images/new/right.png','images/new/front.png','images/new/back.png');
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -83,6 +86,7 @@ export class MyScene extends CGFscene {
 
         //Objects connected to MyInterface
         this.displayAxis = true;
+        this.displayMars = true;
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -129,8 +133,15 @@ export class MyScene extends CGFscene {
         this.sphereAppearance.apply();
         // ---- BEGIN Primitive drawing section
         this.pushMatrix();
-        this.translate(this.mymovingobject.x,this.mymovingobject.y,this.mymovingobject.z);
-        this.mymovingobject.display();
+        //this.translate(this.mymovingobject.x,this.mymovingobject.y,this.mymovingobject.z);
+        //this.mymovingobject.display();
+        //this.popMatrix();
+        this.translate(this.camera.position[0],this.camera.position[1],this.camera.position[2]);
+        this.scale(50,50,50);
+        if(this.displayMars)
+        this.mycubemap.display();
+        else 
+        this.mycubemap1.display();
         this.popMatrix();
         //This sphere does not have defined texture coordinates
         // this.incompleteSphere.display();
