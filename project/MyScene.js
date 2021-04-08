@@ -133,11 +133,12 @@ export class MyScene extends CGFscene {
         this.sphereAppearance.apply();
         // ---- BEGIN Primitive drawing section
         this.pushMatrix();
-        //this.translate(this.mymovingobject.x,this.mymovingobject.y,this.mymovingobject.z);
-        //this.mymovingobject.display();
-        //this.popMatrix();
+        this.translate(this.mymovingobject.x,this.mymovingobject.y,this.mymovingobject.z);
+        this.mymovingobject.display();
+        this.popMatrix();
+        this.pushMatrix();
         this.translate(this.camera.position[0],this.camera.position[1],this.camera.position[2]);
-        this.scale(50,50,50);
+        this.scale(500,500,500);
         if(this.displayMars)
         this.mycubemap.display();
         else 
