@@ -2,6 +2,7 @@ import { CGFscene, CGFcamera, CGFaxis, CGFappearance } from "../lib/CGF.js";
 import { MySphere } from "./MySphere.js";
 import { MyMovingObject } from "./MyMovingObject.js";
 import {MyCubeMap} from "./MyCubeMap.js";
+import { MyCylinder } from "./MyCylinder.js";
 
 /**
 * MyScene
@@ -69,6 +70,7 @@ export class MyScene extends CGFscene {
         this.mymovingobject = new MyMovingObject(this);
         this.mycubemap1 = new MyCubeMap(this,'images/demo_cubemap/top.png','images/demo_cubemap/bottom.png','images/demo_cubemap/left.png','images/demo_cubemap/right.png','images/demo_cubemap/front.png','images/demo_cubemap/back.png');
         this.mycubemap = new MyCubeMap(this,'images/new/top.png','images/new/bottom.png','images/new/left.png','images/new/right.png','images/new/front.png','images/new/back.png');
+        this.mycylinder = new MyCylinder(this,20);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -82,11 +84,13 @@ export class MyScene extends CGFscene {
 		this.sphereAppearance.setDiffuse(0.7, 0.7, 0.7, 1);
 		this.sphereAppearance.setSpecular(0.0, 0.0, 0.0, 1);
 		this.sphereAppearance.setShininess(120);
-
-
+        this.sphereAppearance.loadTexture('images/earth.jpg');
+        this.sphereAppearance.setTextureWrap('REPEAT', 'REPEAT');
+        
         //Objects connected to MyInterface
         this.displayAxis = true;
         this.displayMars = true;
+        this.displayCylinder = true;
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -143,6 +147,12 @@ export class MyScene extends CGFscene {
         this.mycubemap.display();
         else 
         this.mycubemap1.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.sphereAppearance.apply();
+        if(this.displayCylinder)
+            this.mycylinder.display();
         this.popMatrix();
         //This sphere does not have defined texture coordinates
         // this.incompleteSphere.display();
