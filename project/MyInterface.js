@@ -32,7 +32,7 @@ export class MyInterface extends CGFinterface {
         if(this.activeKeys[keyCode]==true && (keyCode=="keyL"|| keyCode=="keyP")){
             this.activeKeys[keyCode]=false;
             return true;
-        }   
+        }
         return this.activeKeys[keyCode] || false;
     }
 
@@ -42,15 +42,16 @@ export class MyInterface extends CGFinterface {
         // init GUI. For more information on the methods, check:
         // http://workshop.chromeexperiments.com/examples/gui
         this.gui = new dat.GUI();
-        
+
         var obj = this;
 
         //Checkbox element in GUI
         this.gui.add(this.scene, 'displayAxis').name('Display Axis');
+        this.gui.add(this.scene, 'displayMovingObject').name('Display Moving Object');
         this.gui.add(this.scene, 'displayMars').name('Display Mars');
         this.gui.add(this.scene, 'displayCylinder').name('Display Cylinder');
         this.initKeys();
         return true;
     }
-   
+
 }

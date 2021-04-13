@@ -44,7 +44,7 @@ export class MyScene extends CGFscene {
     }
         if(keysPressed)
             console.log(text);
-        
+
     }
 
     init(application) {
@@ -61,7 +61,7 @@ export class MyScene extends CGFscene {
         this.gl.depthFunc(this.gl.LEQUAL);
 
         this.setUpdatePeriod(50);
-        
+
         this.enableTextures(true);
 
         //Initialize scene objects
@@ -86,9 +86,10 @@ export class MyScene extends CGFscene {
 		this.sphereAppearance.setShininess(120);
         this.sphereAppearance.loadTexture('images/earth.jpg');
         this.sphereAppearance.setTextureWrap('REPEAT', 'REPEAT');
-        
+
         //Objects connected to MyInterface
         this.displayAxis = true;
+        this.displayMovingObject = true;
         this.displayMars = true;
         this.displayCylinder = true;
     }
@@ -127,8 +128,8 @@ export class MyScene extends CGFscene {
         this.loadIdentity();
         // Apply transformations corresponding to the camera position relative to the origin
         this.applyViewMatrix();
-        
-        
+
+
         this.defaultAppearance.apply();
         // Draw axis
         if (this.displayAxis)
@@ -138,14 +139,15 @@ export class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
         this.pushMatrix();
         this.translate(this.mymovingobject.x,this.mymovingobject.y,this.mymovingobject.z);
-        this.mymovingobject.display();
+        if(this.displayMovingObject)
+          this.mymovingobject.display();
         this.popMatrix();
         this.pushMatrix();
         this.translate(this.camera.position[0],this.camera.position[1],this.camera.position[2]);
         this.scale(500,500,500);
         if(this.displayMars)
         this.mycubemap.display();
-        else 
+        else
         this.mycubemap1.display();
         this.popMatrix();
 
@@ -155,7 +157,7 @@ export class MyScene extends CGFscene {
             this.mycylinder.display();
         this.popMatrix();
         //This sphere does not have defined texture coordinates
-        // this.incompleteSphere.display();
+        this.incompleteSphere.display();
         // ---- END Primitive drawing section
     }
 }
