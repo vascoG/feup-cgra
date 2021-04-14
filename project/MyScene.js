@@ -18,12 +18,12 @@ export class MyScene extends CGFscene {
         var keysPressed=false;
          // Check for key codes e.g. in https://keycode.info/
          if(this.gui.isKeyPressed("KeyW")){
-             this.mymovingobject.accelerate(0.1);
+             this.mymovingobject.accelerate(0.1*this.speedFactor);
              text+=" W ";
              keysPressed=true;
          }
          if(this.gui.isKeyPressed("KeyS")){
-            this.mymovingobject.accelerate(-0.1);
+            this.mymovingobject.accelerate(-0.1*this.speedFactor);
             text+=" S ";
             keysPressed=true;
         }
@@ -91,7 +91,12 @@ export class MyScene extends CGFscene {
         this.displayAxis = true;
         this.displayMovingObject = true;
         this.displayMars = true;
-        this.displayCylinder = true;
+        this.displayCylinder = false;
+        this.displaySphere = false;
+        this.scaleFactor = 1.0;
+        this.speedFactor = 1.0;
+
+
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -135,20 +140,20 @@ export class MyScene extends CGFscene {
         if (this.displayAxis)
             this.axis.display();
 
-        this.sphereAppearance.apply();
         // ---- BEGIN Primitive drawing section
         this.pushMatrix();
         this.translate(this.mymovingobject.x,this.mymovingobject.y,this.mymovingobject.z);
+        this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
         if(this.displayMovingObject)
-          this.mymovingobject.display();
+            this.mymovingobject.display();
         this.popMatrix();
         this.pushMatrix();
         this.translate(this.camera.position[0],this.camera.position[1],this.camera.position[2]);
         this.scale(500,500,500);
         if(this.displayMars)
-        this.mycubemap.display();
+            this.mycubemap.display();
         else
-        this.mycubemap1.display();
+            this.mycubemap1.display();
         this.popMatrix();
 
         this.pushMatrix();
@@ -157,7 +162,8 @@ export class MyScene extends CGFscene {
             this.mycylinder.display();
         this.popMatrix();
         //This sphere does not have defined texture coordinates
-        this.incompleteSphere.display();
+        if(this.displaySphere) 
+            this.incompleteSphere.display();
         // ---- END Primitive drawing section
     }
 }
