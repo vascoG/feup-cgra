@@ -2,10 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\project",
-    "\\project\\images",
-    "\\project\\images\\new",
-    "\\project\\images\\test_cubemap"
+    "\\tp3"
   ],
-  "SelectedNode": "\\project\\MyMovingObject.js",
+  "SelectedNode": "\\project\\MyTriangle.js",
   "PreviewInSolutionExplorer": false
 }

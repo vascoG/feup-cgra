@@ -3,6 +3,7 @@ import { MySphere } from "./MySphere.js";
 import { MyMovingObject } from "./MyMovingObject.js";
 import {MyCubeMap} from "./MyCubeMap.js";
 import { MyCylinder } from "./MyCylinder.js";
+import {MyFish} from "./MyFish.js";
 
 /**
 * MyScene
@@ -71,6 +72,7 @@ export class MyScene extends CGFscene {
         this.mycubemap1 = new MyCubeMap(this,'images/demo_cubemap/top.png','images/demo_cubemap/bottom.png','images/demo_cubemap/left.png','images/demo_cubemap/right.png','images/demo_cubemap/front.png','images/demo_cubemap/back.png');
         this.mycubemap = new MyCubeMap(this,'images/new/top.png','images/new/bottom.png','images/new/left.png','images/new/right.png','images/new/front.png','images/new/back.png');
         this.mycylinder = new MyCylinder(this,20);
+        this.myfish = new MyFish(this,1,1,0,0.4);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -90,11 +92,16 @@ export class MyScene extends CGFscene {
         //Objects connected to MyInterface
         this.displayAxis = true;
         this.displayMovingObject = true;
-        this.displayMars = true;
+        this.displayMars = false;
+        this.displayDefault = true;
         this.displayCylinder = false;
         this.displaySphere = false;
         this.scaleFactor = 1.0;
         this.speedFactor = 1.0;
+        this.selectedTexture = 0;
+
+        this.textureIds = { 'None': 0, 'Mars': 1, 'Default': 2};
+
 
 
     }
@@ -107,6 +114,7 @@ export class MyScene extends CGFscene {
     initCameras() {
         this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
     }
+
 
     setDefaultAppearance() {
         this.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -141,18 +149,21 @@ export class MyScene extends CGFscene {
             this.axis.display();
 
         // ---- BEGIN Primitive drawing section
-        this.pushMatrix();
+        
+        
+        /*this.pushMatrix();
         this.translate(this.mymovingobject.x,this.mymovingobject.y,this.mymovingobject.z);
         this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
+            this.rotate(this.mymovingobject.angle,0,1,0);
         if(this.displayMovingObject)
             this.mymovingobject.display();
         this.popMatrix();
         this.pushMatrix();
         this.translate(this.camera.position[0],this.camera.position[1],this.camera.position[2]);
         this.scale(500,500,500);
-        if(this.displayMars)
-            this.mycubemap.display();
-        else
+        //if(this.displayMars)
+           // this.mycubemap.display();
+        if(this.displayDefault)
             this.mycubemap1.display();
         this.popMatrix();
 
@@ -164,6 +175,8 @@ export class MyScene extends CGFscene {
         //This sphere does not have defined texture coordinates
         if(this.displaySphere) 
             this.incompleteSphere.display();
+            */
+            this.myfish.display();
         // ---- END Primitive drawing section
     }
 }
