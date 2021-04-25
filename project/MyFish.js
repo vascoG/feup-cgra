@@ -18,7 +18,6 @@ export class MyFish extends CGFobject {
 		this.body = new MySphere(this.scene, 16, 8);
 		this.bodyTexture = new CGFappearance(this.scene);
 		this.bodyTexture.loadTexture("images/fish_texture.jpg");
-		this.bodyTexture.setTextureWrap("CLAMP_TO_EDGE", "CLAMP_TO_EDGE");
 
 		this.finTexture = new CGFappearance(this.scene);
 		this.finTexture.setColor(r,g,b,1);
@@ -27,7 +26,6 @@ export class MyFish extends CGFobject {
 		this.bodyShader.setUniformsValues({red:r});
 		this.bodyShader.setUniformsValues({green:g});
 		this.bodyShader.setUniformsValues({blue:b});
-		this.bodyShader.setUniformsValues({uSampler2D:1});
 		this.bodyShader.setUniformsValues({headRatio:ratio});
 
 		this.leftFin = new MyTriangle(this.scene);

@@ -17,7 +17,5 @@ void main() {
 	if (coords.z > ((0.05-headRatio*0.1)*2.0))
 		gl_FragColor =  vec4(red,green,blue,1);
 	else
-	{
 		gl_FragColor = texture2D(uSampler, vTextureCoord);
-	}
 }

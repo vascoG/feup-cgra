@@ -72,7 +72,7 @@ export class MyScene extends CGFscene {
         this.mycubemap1 = new MyCubeMap(this,'images/demo_cubemap/top.png','images/demo_cubemap/bottom.png','images/demo_cubemap/left.png','images/demo_cubemap/right.png','images/demo_cubemap/front.png','images/demo_cubemap/back.png');
         this.mycubemap = new MyCubeMap(this,'images/new/top.png','images/new/bottom.png','images/new/left.png','images/new/right.png','images/new/front.png','images/new/back.png');
         this.mycylinder = new MyCylinder(this,20);
-        this.myfish = new MyFish(this,1,1,0,0.4);
+        this.myfish = new MyFish(this,1,0,0,0.4);
         this.objects = [this.mycubemap, this.mycubemap1];
 
         this.defaultAppearance = new CGFappearance(this);
@@ -155,7 +155,7 @@ export class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
         
-        
+        /*
         this.pushMatrix();
         this.translate(this.mymovingobject.x,this.mymovingobject.y,this.mymovingobject.z);
         this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
@@ -177,8 +177,8 @@ export class MyScene extends CGFscene {
         //This sphere does not have defined texture coordinates
         if(this.displaySphere) 
             this.incompleteSphere.display();
-            
-          //  this.myfish.display();
+          */  
+        this.myfish.display();
         // ---- END Primitive drawing section
     }
 }
