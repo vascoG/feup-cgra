@@ -73,6 +73,7 @@ export class MyScene extends CGFscene {
         this.mycubemap = new MyCubeMap(this,'images/new/top.png','images/new/bottom.png','images/new/left.png','images/new/right.png','images/new/front.png','images/new/back.png');
         this.mycylinder = new MyCylinder(this,20);
         this.myfish = new MyFish(this,1,1,0,0.4);
+        this.objects = [this.mycubemap, this.mycubemap1];
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -100,11 +101,15 @@ export class MyScene extends CGFscene {
         this.speedFactor = 1.0;
         this.selectedTexture = 0;
 
-        this.textureIds = { 'None': 0, 'Mars': 1, 'Default': 2};
+        this.textureIds = { 'Mars': 0, 'Default': 1};
 
 
 
     }
+     updateObjectComplexity(){
+        this.objects[this.selectedTexture].updateBuffers(this.objectComplexity);
+    }
+
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
         this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
@@ -151,20 +156,17 @@ export class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
         
         
-        /*this.pushMatrix();
+        this.pushMatrix();
         this.translate(this.mymovingobject.x,this.mymovingobject.y,this.mymovingobject.z);
         this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
-            this.rotate(this.mymovingobject.angle,0,1,0);
+            this.rotate(this.mymovingobject.angle*Math.PI/180,0,1,0);
         if(this.displayMovingObject)
             this.mymovingobject.display();
         this.popMatrix();
         this.pushMatrix();
         this.translate(this.camera.position[0],this.camera.position[1],this.camera.position[2]);
         this.scale(500,500,500);
-        //if(this.displayMars)
-           // this.mycubemap.display();
-        if(this.displayDefault)
-            this.mycubemap1.display();
+        this.objects[this.selectedTexture].display();
         this.popMatrix();
 
         this.pushMatrix();
@@ -175,8 +177,8 @@ export class MyScene extends CGFscene {
         //This sphere does not have defined texture coordinates
         if(this.displaySphere) 
             this.incompleteSphere.display();
-            */
-            this.myfish.display();
+            
+          //  this.myfish.display();
         // ---- END Primitive drawing section
     }
 }
