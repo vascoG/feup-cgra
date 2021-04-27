@@ -134,6 +134,8 @@ export class MyScene extends CGFscene {
         //To be done...
         this.checkKeys();
         this.mymovingobject.update();
+        this.myfish.updateTailAngle(t); 
+        this.myfish.updateFinAngle(t);
     }
 
     display() {

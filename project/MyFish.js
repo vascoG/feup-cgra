@@ -14,7 +14,8 @@ export class MyFish extends CGFobject {
 		this.x = 0;
 		this.y = 3;
 		this.z = 0;
-        
+        this.angleTail = 0;
+		this.angleFin = 0;
 		this.body = new MySphere(this.scene, 16, 8);
 		this.bodyTexture = new CGFappearance(this.scene);
 		this.bodyTexture.loadTexture("images/fish_texture.jpg");
@@ -33,21 +34,35 @@ export class MyFish extends CGFobject {
 		this.topFin = new MyTriangle(this.scene);
 		this.tail = new MyTriangle(this.scene);
 
-	}
+		this.eye = new MySphere(this.scene, 16, 8);
+		this.eyeTexture = new CGFappearance(this.scene);
+		this.eyeTexture.loadTexture("images/eye.png");
+		
 	
+ 
+	}
+	updateTailAngle(t){
+		t=t/100; 
+		this.angleTail=20*Math.sin(t);
+	}
+	updateFinAngle(t){
+		t=t/200; 
+		this.angleFin=20*Math.sin(t);
+	}
 	display()
 	{
 	this.scene.pushMatrix();
 	this.bodyTexture.apply();
 	this.scene.setActiveShader(this.bodyShader);
-	this.scene.scale(0.3,0.4,0.5);
+	this.scene.scale(0.15,0.2,0.25);
 	this.body.display();
 	this.scene.setActiveShader(this.scene.defaultShader);
 	this.scene.popMatrix();
 
 	this.scene.pushMatrix();
-	this.scene.translate(0.35,-0.1,-0.1);
-	this.scene.scale(0.2,0.2,0.2);
+	this.scene.rotate(this.angleFin*Math.PI/180,0,0,1);
+	this.scene.translate(0.175,-0.1,-0.1);
+	this.scene.scale(0.1,0.1,0.1);
 	this.scene.rotate(Math.PI/8,0,0,1);
 	this.scene.rotate(Math.PI/2,0,1,0);
 	this.finTexture.apply();
@@ -55,8 +70,9 @@ export class MyFish extends CGFobject {
 	this.scene.popMatrix();
 	
 	this.scene.pushMatrix();
-	this.scene.translate(-0.35,-0.1,-0.1);
-	this.scene.scale(0.2,0.2,0.2);
+	this.scene.rotate(-this.angleFin*Math.PI/180,0,0,1);
+	this.scene.translate(-0.175,-0.1,-0.1);
+	this.scene.scale(0.1,0.1,0.1);
 	this.scene.rotate(-Math.PI/8,0,0,1);
 	this.scene.rotate(Math.PI/2,0,1,0);
 	this.finTexture.apply();
@@ -64,20 +80,37 @@ export class MyFish extends CGFobject {
 	this.scene.popMatrix();
 
 	this.scene.pushMatrix();
-	this.scene.translate(0,0.5,0);
-	this.scene.scale(0.2,0.2,0.2);
+	this.scene.translate(0,0.25,0);
+	this.scene.scale(0.1,0.1,0.1);
 	this.scene.rotate(-Math.PI/2,0,1,0);
 	this.finTexture.apply();
 	this.topFin.display();
 	this.scene.popMatrix();
 
 	this.scene.pushMatrix();
-	this.scene.translate(0,0,-0.9);
-	this.scene.scale(0.3,0.3,0.3);
+	this.scene.rotate(this.angleTail*Math.PI/180,0,1,0);
+	this.scene.translate(0,0,-0.45);
+	this.scene.scale(0.15,0.15,0.15);
 	this.scene.rotate(-Math.PI/4,1,0,0);
 	this.scene.rotate(Math.PI/2,0,1,0);
 	this.finTexture.apply();
-	this.topFin.display();
+	this.tail.display();
+	this.scene.popMatrix();
+	
+	this.scene.pushMatrix();
+	this.scene.translate(0.12,0.05,0.12);
+	this.scene.scale(0.05,0.05,0.05);
+	this.scene.rotate(90*Math.PI/180,0,1,0);
+	this.eyeTexture.apply();
+	this.eye.display();
+	this.scene.popMatrix();
+
+	this.scene.pushMatrix();
+	this.scene.translate(-0.12,0.05,0.12);
+	this.scene.scale(0.05,0.05,0.05);
+	this.scene.rotate(90*Math.PI/180,0,1,0);
+	this.eyeTexture.apply();
+	this.eye.display();
 	this.scene.popMatrix();
 
 	}
