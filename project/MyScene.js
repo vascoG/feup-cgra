@@ -117,7 +117,7 @@ export class MyScene extends CGFscene {
         this.lights[0].update();
     }
     initCameras() {
-        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
+        this.camera = new CGFcamera(2, 0.1, 500, vec3.fromValues(2, 2, 2), vec3.fromValues(0, 2, 0));
     }
 
 
@@ -180,7 +180,10 @@ export class MyScene extends CGFscene {
         if(this.displaySphere) 
             this.incompleteSphere.display();
           */  
+        this.pushMatrix();
+        this.translate(this.myfish.x,this.myfish.y,this.myfish.z);
         this.myfish.display();
+        this.popMatrix();
         // ---- END Primitive drawing section
     }
 }
