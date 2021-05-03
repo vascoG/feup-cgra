@@ -15,7 +15,7 @@ export class MySeaFloor extends CGFobject {
 		super(scene);
 
 	this.sand = new CGFtexture(this.scene, "images/sand.png");
-	this.sandMap = new CGFtexture(this.scene, "images/sandMap.png");
+	this.sandMap = new CGFtexture(this.scene, "images/sandMap (1).png");
 
 
 	this.sandShader = new CGFshader(this.scene.gl, "shaders/sand.vert", "shaders/sand.frag");
@@ -24,6 +24,10 @@ export class MySeaFloor extends CGFobject {
 	this.sandShader.setUniformsValues({ uSampler2: 2 });
 
 	this.plane = new MyPlane(this.scene,20,0,1,0,1);
+
+	this.nestRadius = 5;
+	this.nestX = 0.85;
+	this.nextZ = 0.85;
 	
 	}
 	display(){

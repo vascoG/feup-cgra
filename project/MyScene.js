@@ -1,10 +1,11 @@
-import { CGFscene, CGFcamera, CGFaxis, CGFappearance  } from "../lib/CGF.js";
+import { CGFscene, CGFcamera, CGFaxis, CGFappearance, CGFtexture, CGFshader  } from "../lib/CGF.js";
 import { MySphere } from "./MySphere.js";
 import { MyMovingObject } from "./MyMovingObject.js";
 import {MyCubeMap} from "./MyCubeMap.js";
 import { MyCylinder } from "./MyCylinder.js";
 import {MyFish} from "./MyFish.js";
 import { MySeaFloor } from "./MySeaFloor.js";
+import {MyQuad} from "./MyQuad.js";
 
 /**
 * MyScene
@@ -80,6 +81,8 @@ export class MyScene extends CGFscene {
         this.myfish = new MyFish(this,1,0,0,0.4);
         this.objects = [this.mycubemap, this.mycubemap1];
         this.myseafloor = new MySeaFloor (this);
+        this.watercubemap = new MyCubeMap(this,'images/underwater_cubemap/top.jpg','images/underwater_cubemap/bottom.jpg','images/underwater_cubemap/right.jpg','images/underwater_cubemap/left.jpg','images/underwater_cubemap/front.jpg','images/underwater_cubemap/back.jpg')
+        this.quad = new MyQuad(this);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -95,6 +98,12 @@ export class MyScene extends CGFscene {
 		this.sphereAppearance.setShininess(120);
         this.sphereAppearance.loadTexture('images/earth.jpg');
         this.sphereAppearance.setTextureWrap('REPEAT', 'REPEAT');
+
+        this.distorcionTexture = new CGFtexture(this, "images/distortionmap.png");
+        this.quadTexture = new CGFtexture(this, "images/pier.jpg");
+        this.quadShader = new CGFshader(this.gl, "shaders/distorcion.vert","shaders/distorcion.frag");
+	    this.quadShader.setUniformsValues({ uSampler1: 3 });
+	    this.quadShader.setUniformsValues({ uSampler2: 4 });
 
         //Objects connected to MyInterface
         this.displayAxis = true;
@@ -142,6 +151,7 @@ export class MyScene extends CGFscene {
         this.mymovingobject.update();
         this.myfish.updateTailAngle(t); 
         this.myfish.updateFinAngle(t);
+        this.quadShader.setUniformsValues({ timeFactor: t / 100 % 100 });
     }
 
     display() {
@@ -160,6 +170,9 @@ export class MyScene extends CGFscene {
         // Draw axis
         if (this.displayAxis)
             this.axis.display();
+
+        this.quadTexture.bind(3);
+        this.distorcionTexture.bind(4);
 
         // ---- BEGIN Primitive drawing section
         
@@ -193,6 +206,19 @@ export class MyScene extends CGFscene {
         this.pushMatrix();
         this.myseafloor.display();
         this.popMatrix();
+        this.pushMatrix();
+        this.translate(this.camera.position[0],this.camera.position[1],this.camera.position[2]);
+        this.scale(500,500,500);
+        this.watercubemap.display();
+        this.popMatrix();
+        this.pushMatrix();
+        this.setActiveShader(this.quadShader);
+        this.translate(0,10,0);
+        this.scale(500,500,500);
+        this.rotate(Math.PI/2,1,0,0);
+        this.quad.display();
+        this.popMatrix();
+        this.setActiveShader(this.defaultShader);
         // ---- END Primitive drawing section
     }
 }

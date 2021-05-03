@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\project"
+    "\\project",
+    "\\project\\images",
+    "\\project\\shaders",
+    "\\tp5\\shaders",
+    "\\tp5\\textures"
   ],
-  "SelectedNode": "\\project\\MyFish.js",
+  "SelectedNode": "\\project\\shaders\\sand.vert",
   "PreviewInSolutionExplorer": false
 }

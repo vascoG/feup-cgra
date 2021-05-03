@@ -23,7 +23,7 @@ export class MyFish extends CGFobject {
 		this.finTexture = new CGFappearance(this.scene);
 		this.finTexture.setColor(r,g,b,1);
 
-		this.bodyShader = new CGFshader(this.scene.gl, "varying.vert", "varying.frag");
+		this.bodyShader = new CGFshader(this.scene.gl, "shaders/varying.vert", "shaders/varying.frag");
 		this.bodyShader.setUniformsValues({red:r});
 		this.bodyShader.setUniformsValues({green:g});
 		this.bodyShader.setUniformsValues({blue:b});

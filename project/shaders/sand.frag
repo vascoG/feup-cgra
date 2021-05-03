@@ -13,7 +13,6 @@ void main() {
 
 
 	vec4 color = texture2D(uSampler1, vTextureCoord);
-    vec4 filter = texture2D(uSampler2,vTextureCoord);
 
 	gl_FragColor = color;
 }
