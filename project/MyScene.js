@@ -85,7 +85,7 @@ export class MyScene extends CGFscene {
         this.myseafloor = new MySeaFloor (this);
         this.watercubemap = new MyCubeMap(this,'images/underwater_cubemap/top.jpg','images/underwater_cubemap/bottom.jpg','images/underwater_cubemap/right.jpg','images/underwater_cubemap/left.jpg','images/underwater_cubemap/front.jpg','images/underwater_cubemap/back.jpg')
         this.quad = new MyQuad(this);
-        this.rock = new MyRock(this,20,20);
+        this.rock = new MyRock(this,15,15);
         this.rockset = new MyRockSet(this,5);
 
         this.defaultAppearance = new CGFappearance(this);
@@ -213,7 +213,7 @@ export class MyScene extends CGFscene {
         this.pushMatrix();
         this.translate(this.camera.position[0],this.camera.position[1],this.camera.position[2]);
         this.scale(500,500,500);
-        this.watercubemap.display();
+        //this.watercubemap.display();
         this.popMatrix();
         this.pushMatrix();
         this.setActiveShader(this.quadShader);
@@ -224,6 +224,7 @@ export class MyScene extends CGFscene {
         this.popMatrix();
         this.setActiveShader(this.defaultShader);
         this.pushMatrix();
+        this.defaultAppearance.apply();
         this.rockset.display();
         this.popMatrix();
         // ---- END Primitive drawing section
