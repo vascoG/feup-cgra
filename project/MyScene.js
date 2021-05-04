@@ -8,6 +8,7 @@ import { MySeaFloor } from "./MySeaFloor.js";
 import {MyQuad} from "./MyQuad.js";
 import {MyRock} from "./MyRock.js";
 import {MyRockSet} from "./MyRockSet.js";
+import {MyPillar} from "./MyPillar.js";
 
 /**
 * MyScene
@@ -87,6 +88,11 @@ export class MyScene extends CGFscene {
         this.quad = new MyQuad(this);
         this.rock = new MyRock(this,15,15);
         this.rockset = new MyRockSet(this,5);
+        this.pillar1 = new MyPillar(this);
+        this.pillar2 = new MyPillar(this);
+        this.pillar3 = new MyPillar(this);
+        this.pillar4 = new MyPillar(this);
+
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -213,7 +219,7 @@ export class MyScene extends CGFscene {
         this.pushMatrix();
         this.translate(this.camera.position[0],this.camera.position[1],this.camera.position[2]);
         this.scale(500,500,500);
-        //this.watercubemap.display();
+        this.watercubemap.display();
         this.popMatrix();
         this.pushMatrix();
         this.setActiveShader(this.quadShader);
@@ -224,8 +230,23 @@ export class MyScene extends CGFscene {
         this.popMatrix();
         this.setActiveShader(this.defaultShader);
         this.pushMatrix();
-        this.defaultAppearance.apply();
-        this.rockset.display();
+        //this.defaultAppearance.apply();
+        //this.rock.display();
+        this.popMatrix();
+        this.pushMatrix();
+        this.pillar1.display();
+        this.popMatrix();
+        this.pushMatrix();
+        this.translate(-10,0,0);
+        this.pillar2.display();
+        this.popMatrix();
+        this.pushMatrix();
+        this.translate(0,0,-12);
+        this.pillar3.display();
+        this.popMatrix();
+        this.pushMatrix();
+        this.translate(0,0,-19);
+        this.pillar4.display();
         this.popMatrix();
         // ---- END Primitive drawing section
     }

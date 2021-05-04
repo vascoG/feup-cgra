@@ -27,4 +27,6 @@
 
 ![Screenshot 3a](screenshots/proj-t2-g04-3a.png)
 ![Screenshot 3b](screenshots/proj-t2-g04-3b.png)
+![Screenshot 3c](screenshots/proj-t2-g04-3c.png)
+
 
