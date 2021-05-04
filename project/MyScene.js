@@ -6,6 +6,8 @@ import { MyCylinder } from "./MyCylinder.js";
 import {MyFish} from "./MyFish.js";
 import { MySeaFloor } from "./MySeaFloor.js";
 import {MyQuad} from "./MyQuad.js";
+import {MyRock} from "./MyRock.js";
+import {MyRockSet} from "./MyRockSet.js";
 
 /**
 * MyScene
@@ -83,6 +85,8 @@ export class MyScene extends CGFscene {
         this.myseafloor = new MySeaFloor (this);
         this.watercubemap = new MyCubeMap(this,'images/underwater_cubemap/top.jpg','images/underwater_cubemap/bottom.jpg','images/underwater_cubemap/right.jpg','images/underwater_cubemap/left.jpg','images/underwater_cubemap/front.jpg','images/underwater_cubemap/back.jpg')
         this.quad = new MyQuad(this);
+        this.rock = new MyRock(this,20,20);
+        this.rockset = new MyRockSet(this,5);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -219,6 +223,9 @@ export class MyScene extends CGFscene {
         this.quad.display();
         this.popMatrix();
         this.setActiveShader(this.defaultShader);
+        this.pushMatrix();
+        this.rockset.display();
+        this.popMatrix();
         // ---- END Primitive drawing section
     }
 }

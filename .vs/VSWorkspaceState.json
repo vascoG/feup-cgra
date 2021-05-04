@@ -1,12 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\project",
-    "\\project\\images",
-    "\\project\\shaders",
-    "\\tp5\\shaders",
-    "\\tp5\\textures"
+    "\\project"
   ],
-  "SelectedNode": "\\project\\shaders\\sand.vert",
+  "SelectedNode": "\\project\\MyRock.js",
   "PreviewInSolutionExplorer": false
 }
