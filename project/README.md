@@ -15,5 +15,5 @@
 
 ### 1 - MyFish
 
-![Screenshot 1a](screenshots/proj-t2g04-1a.png)
-![Screenshot 1b](screenshots/proj-t2g04-1b.png)
+![Screenshot 1a](screenshots/proj-t2-g04-1a.png)
+![Screenshot 1b](screenshots/proj-t2-g04-1b.png)
