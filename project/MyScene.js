@@ -9,6 +9,8 @@ import {MyQuad} from "./MyQuad.js";
 import {MyRock} from "./MyRock.js";
 import {MyRockSet} from "./MyRockSet.js";
 import {MyPillar} from "./MyPillar.js";
+import {MyAlga} from "./MyAlga.js";
+import {MyAlgaSet} from "./MyAlgaSet.js";
 
 /**
 * MyScene
@@ -92,6 +94,10 @@ export class MyScene extends CGFscene {
         this.pillar2 = new MyPillar(this);
         this.pillar3 = new MyPillar(this);
         this.pillar4 = new MyPillar(this);
+        this.algas1 = new MyAlgaSet(this,5);
+        this.algas2 = new MyAlgaSet(this,3);
+        this.algas3 = new MyAlgaSet(this,8);
+        this.algas4 = new MyAlgaSet(this,6);
 
 
         this.defaultAppearance = new CGFappearance(this);
@@ -230,10 +236,10 @@ export class MyScene extends CGFscene {
         this.popMatrix();
         this.setActiveShader(this.defaultShader);
         this.pushMatrix();
-        //this.defaultAppearance.apply();
-        //this.rock.display();
+       // this.rock.display();
         this.popMatrix();
         this.pushMatrix();
+        this.translate(-1,0,0);
         this.pillar1.display();
         this.popMatrix();
         this.pushMatrix();
@@ -247,6 +253,38 @@ export class MyScene extends CGFscene {
         this.pushMatrix();
         this.translate(0,0,-19);
         this.pillar4.display();
+        this.popMatrix();
+        this.pushMatrix();
+        this.translate(-5,0,0);
+        this.algas1.display();
+        this.popMatrix();
+        this.pushMatrix();
+        this.translate(-10,0,-3);
+        this.algas2.display();
+        this.popMatrix();
+        this.pushMatrix();
+        this.translate(-2,0,-12);
+        this.algas3.display();
+        this.popMatrix();
+        this.pushMatrix();
+        this.translate(0,0,-8);
+        this.algas4.display();
+        this.popMatrix();
+        this.pushMatrix();
+        this.translate(15,0,2);
+        this.algas1.display();
+        this.popMatrix();
+        this.pushMatrix();
+        this.translate(5,0,10);
+        this.algas2.display();
+        this.popMatrix();
+        this.pushMatrix();
+        this.translate(5,0,-7);
+        this.algas3.display();
+        this.popMatrix();
+        this.pushMatrix();
+        this.translate(12,0,2);
+        this.algas4.display();
         this.popMatrix();
         // ---- END Primitive drawing section
     }
