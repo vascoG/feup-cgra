@@ -39,11 +39,13 @@ export class MyScene extends CGFscene {
         if(this.gui.isKeyPressed("KeyA")){
             this.mymovingfish.turn(5);
             text+=" A ";
+            this.mymovingfish.rotateLeft();
             keysPressed=true;
         }
         if(this.gui.isKeyPressed("KeyD")){
            this.mymovingfish.turn(-5);
            text+=" D ";
+           this.mymovingfish.rotateRight();
            keysPressed=true;
        }
        if(this.gui.isKeyPressed("KeyR")){
@@ -246,7 +248,8 @@ export class MyScene extends CGFscene {
         this.popMatrix();
         this.setActiveShader(this.defaultShader);
         this.pushMatrix();
-       // this.rock.display();
+        this.scale(0.2,0.2,0.2);
+        this.rock.display();
         this.popMatrix();
         this.pushMatrix();
         this.translate(-1,0,0);

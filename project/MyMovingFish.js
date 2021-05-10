@@ -11,6 +11,13 @@ export class MyMovingFish extends MyMovingObject{
 		this.down = false;
 	}
 
+	rotateRight(){
+		this.myfish.rotateright=true;
+	}
+	rotateLeft(){
+		this.myfish.rotateleft=true;
+	}
+
 	update(t)
 	{	if(this.myfish.y<=1)
 			this.down = false;
@@ -18,7 +25,7 @@ export class MyMovingFish extends MyMovingObject{
 			this.up=false;
 		this.x+=this.velocity*Math.sin(this.angle*Math.PI/180);
 		this.z+=this.velocity*Math.cos(this.angle*Math.PI/180);
-		this.myfish.updateTailAngle(t);
+		this.myfish.updateTailAngle(t,this.velocity);
 		this.myfish.updateFinAngle(t);
 		if(this.up)
 			this.myfish.y+=0.05;

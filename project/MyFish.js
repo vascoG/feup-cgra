@@ -16,6 +16,8 @@ export class MyFish extends CGFobject {
 		this.z = 0;
         this.angleTail = 0;
 		this.angleFin = 0;
+		this.rotateright=false;
+		this.rotateleft=false;
 		this.body = new MySphere(this.scene, 16, 8);
 		this.bodyTexture = new CGFappearance(this.scene);
 		this.bodyTexture.loadTexture("images/fish_texture.jpg");
@@ -37,12 +39,14 @@ export class MyFish extends CGFobject {
 		this.eye = new MySphere(this.scene, 16, 8);
 		this.eyeTexture = new CGFappearance(this.scene);
 		this.eyeTexture.loadTexture("images/eye.png");
-		
-	
  
 	}
-	updateTailAngle(t){
-		t=t/100; 
+
+
+	updateTailAngle(t,v){
+		t=t/100;
+		if(v!=0)
+			t=t*(Math.abs(v)+1); 
 		this.angleTail=20*Math.sin(t);
 	}
 	updateFinAngle(t){
@@ -60,7 +64,8 @@ export class MyFish extends CGFobject {
 	this.scene.popMatrix();
 
 	this.scene.pushMatrix();
-	this.scene.rotate(this.angleFin*Math.PI/180,0,0,1);
+	if(!this.rotateleft)
+		this.scene.rotate(this.angleFin*Math.PI/180,0,0,1);
 	this.scene.translate(0.175,-0.1,-0.1);
 	this.scene.scale(0.1,0.1,0.1);
 	this.scene.rotate(Math.PI/8,0,0,1);
@@ -70,7 +75,8 @@ export class MyFish extends CGFobject {
 	this.scene.popMatrix();
 	
 	this.scene.pushMatrix();
-	this.scene.rotate(-this.angleFin*Math.PI/180,0,0,1);
+    if(!this.rotateright)
+		this.scene.rotate(-this.angleFin*Math.PI/180,0,0,1);
 	this.scene.translate(-0.175,-0.1,-0.1);
 	this.scene.scale(0.1,0.1,0.1);
 	this.scene.rotate(-Math.PI/8,0,0,1);
@@ -112,6 +118,8 @@ export class MyFish extends CGFobject {
 	this.eyeTexture.apply();
 	this.eye.display();
 	this.scene.popMatrix();
-
+	
+	this.rotateright=false;
+	this.rotateleft=false;
 	}
 }
