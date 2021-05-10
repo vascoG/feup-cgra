@@ -12,7 +12,7 @@ export class MyFish extends CGFobject {
 	constructor(scene, r, g, b, ratio) {
 		super(scene);
 		this.x = 0;
-		this.y = 3;
+		this.y = 4;
 		this.z = 0;
         this.angleTail = 0;
 		this.angleFin = 0;

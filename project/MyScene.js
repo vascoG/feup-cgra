@@ -11,6 +11,7 @@ import {MyRockSet} from "./MyRockSet.js";
 import {MyPillar} from "./MyPillar.js";
 import {MyAlga} from "./MyAlga.js";
 import {MyAlgaSet} from "./MyAlgaSet.js";
+import {MyMovingFish} from "./MyMovingFish.js";
 
 /**
 * MyScene
@@ -26,28 +27,40 @@ export class MyScene extends CGFscene {
         var keysPressed=false;
          // Check for key codes e.g. in https://keycode.info/
          if(this.gui.isKeyPressed("KeyW")){
-             this.mymovingobject.accelerate(0.1*this.speedFactor);
+             this.mymovingfish.accelerate(0.05*this.speedFactor);
              text+=" W ";
              keysPressed=true;
          }
          if(this.gui.isKeyPressed("KeyS")){
-            this.mymovingobject.accelerate(-0.1*this.speedFactor);
+            this.mymovingfish.accelerate(-0.05*this.speedFactor);
             text+=" S ";
             keysPressed=true;
         }
         if(this.gui.isKeyPressed("KeyA")){
-            this.mymovingobject.turn(10);
+            this.mymovingfish.turn(5);
             text+=" A ";
             keysPressed=true;
         }
         if(this.gui.isKeyPressed("KeyD")){
-           this.mymovingobject.turn(-10);
+           this.mymovingfish.turn(-5);
            text+=" D ";
            keysPressed=true;
        }
        if(this.gui.isKeyPressed("KeyR")){
-        this.mymovingobject.reset();
+        this.mymovingfish.reset();
         text+=" R ";
+        keysPressed=true;
+    }
+      if(this.gui.isKeyPressed("KeyP")){
+        this.mymovingfish.up=true;
+        this.mymovingfish.down=false;
+        text+=" P ";
+        keysPressed=true;
+    }
+    if(this.gui.isKeyPressed("KeyL")){
+        this.mymovingfish.down=true;
+        this.mymovingfish.up=false;
+        text+=" L ";
         keysPressed=true;
     }
         if(keysPressed)
@@ -83,7 +96,7 @@ export class MyScene extends CGFscene {
         this.mycubemap1 = new MyCubeMap(this,'images/demo_cubemap/top.png','images/demo_cubemap/bottom.png','images/demo_cubemap/left.png','images/demo_cubemap/right.png','images/demo_cubemap/front.png','images/demo_cubemap/back.png');
         this.mycubemap = new MyCubeMap(this,'images/new/top.png','images/new/bottom.png','images/new/left.png','images/new/right.png','images/new/front.png','images/new/back.png');
         this.mycylinder = new MyCylinder(this,20);
-        this.myfish = new MyFish(this,1,0,0,0.4);
+        this.mymovingfish = new MyMovingFish(this);
         this.objects = [this.mycubemap, this.mycubemap1];
         this.myseafloor = new MySeaFloor (this);
         this.watercubemap = new MyCubeMap(this,'images/underwater_cubemap/top.jpg','images/underwater_cubemap/bottom.jpg','images/underwater_cubemap/right.jpg','images/underwater_cubemap/left.jpg','images/underwater_cubemap/front.jpg','images/underwater_cubemap/back.jpg')
@@ -164,9 +177,7 @@ export class MyScene extends CGFscene {
     update(t){
         //To be done...
         this.checkKeys();
-        this.mymovingobject.update();
-        this.myfish.updateTailAngle(t); 
-        this.myfish.updateFinAngle(t);
+        this.mymovingfish.update(t);
         this.quadShader.setUniformsValues({ timeFactor: t / 100 % 100 });
     }
 
@@ -216,8 +227,7 @@ export class MyScene extends CGFscene {
             this.incompleteSphere.display();
           */  
         this.pushMatrix();
-        this.translate(this.myfish.x,this.myfish.y,this.myfish.z);
-        this.myfish.display();
+        this.mymovingfish.display();
         this.popMatrix();
         this.pushMatrix();
         this.myseafloor.display();
