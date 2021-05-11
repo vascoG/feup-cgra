@@ -11,7 +11,8 @@ export class MyRock extends CGFobject {
     super(scene);
     this.latDivs = stacks * 2;
     this.longDivs = slices;
-
+    this.x=Math.random()*50-25;
+    this.z=Math.random()*50-25;
 
     this.random1 = Math.random();
     this.random2 = Math.random();
@@ -30,7 +31,6 @@ export class MyRock extends CGFobject {
     this.indices = [];
     this.normals = [];
     this.texCoords = [];
-
     var phi = 0;
     var theta = 0;
     var phiInc = Math.PI / this.latDivs;
@@ -46,16 +46,17 @@ export class MyRock extends CGFobject {
       theta = 0;
       for (let longitude = 0; longitude <= this.longDivs; longitude++) {
         //--- Vertices coordinates
-          if(longitude == this.longDivs) { 
-          var x = this.vertices[latitude*3*this.longDivs];
-          var y = this.vertices[latitude*3*this.longDivs+1];
-          var z = this.vertices[latitude*3*this.longDivs+2];
-          this.vertices.push(x,y,z);
-        }
-        else{
         var x = Math.cos(theta) * sinPhi;
         var y = cosPhi;
         var z = Math.sin(-theta) * sinPhi;
+          if(longitude == this.longDivs) { 
+          var x1 = this.vertices[latitude*3*(this.longDivs+1)];
+          var y1 = this.vertices[latitude*3*(this.longDivs+1)+1];
+          var z1 = this.vertices[latitude*3*(this.longDivs+1)+2];
+          this.vertices.push(x1,y1,z1);
+        }
+        else{
+       
         var r = Math.random()*0.5;
         this.vertices.push(x+x*r, y+y*r, z+z*r);
         }
@@ -83,7 +84,10 @@ export class MyRock extends CGFobject {
         //--- Texture Coordinates
         // To be done...
         // May need some additional code also in the beginning of the function.
-        this.texCoords.push(longitude / this.longDivs, latitude / this.latDivs);
+        if(longitude==this.longDivs)
+          this.texCoords.push(0,latitude/this.latDivs);
+        else
+          this.texCoords.push(longitude / this.longDivs, latitude / this.latDivs);
       }
       phi += phiInc;
     }

@@ -104,7 +104,7 @@ export class MyScene extends CGFscene {
         this.watercubemap = new MyCubeMap(this,'images/underwater_cubemap/top.jpg','images/underwater_cubemap/bottom.jpg','images/underwater_cubemap/left.jpg','images/underwater_cubemap/right.jpg','images/underwater_cubemap/front.jpg','images/underwater_cubemap/back.jpg')
         this.quad = new MyQuad(this);
         this.rock = new MyRock(this,15,15);
-        this.rockset = new MyRockSet(this,5);
+        this.rockset = new MyRockSet(this,10);
         this.pillar1 = new MyPillar(this);
         this.pillar2 = new MyPillar(this);
         this.pillar3 = new MyPillar(this);
@@ -113,7 +113,7 @@ export class MyScene extends CGFscene {
         this.algas2 = new MyAlgaSet(this,3);
         this.algas3 = new MyAlgaSet(this,8);
         this.algas4 = new MyAlgaSet(this,6);
-
+        
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -174,7 +174,6 @@ export class MyScene extends CGFscene {
         this.setEmission(0,0,0,1);
         this.setShininess(10.0);
     }
-
     // called periodically (as per setUpdatePeriod() in init())
     update(t){
         //To be done...
@@ -248,7 +247,7 @@ export class MyScene extends CGFscene {
         this.popMatrix();
         this.setActiveShader(this.defaultShader);
         this.pushMatrix();
-     
+        this.rockset.display();
         this.rock.display();
         this.popMatrix();
         this.pushMatrix();
