@@ -101,7 +101,7 @@ export class MyScene extends CGFscene {
         this.mymovingfish = new MyMovingFish(this);
         this.objects = [this.mycubemap, this.mycubemap1];
         this.myseafloor = new MySeaFloor (this);
-        this.watercubemap = new MyCubeMap(this,'images/underwater_cubemap/top.jpg','images/underwater_cubemap/bottom.jpg','images/underwater_cubemap/right.jpg','images/underwater_cubemap/left.jpg','images/underwater_cubemap/front.jpg','images/underwater_cubemap/back.jpg')
+        this.watercubemap = new MyCubeMap(this,'images/underwater_cubemap/top.jpg','images/underwater_cubemap/bottom.jpg','images/underwater_cubemap/left.jpg','images/underwater_cubemap/right.jpg','images/underwater_cubemap/front.jpg','images/underwater_cubemap/back.jpg')
         this.quad = new MyQuad(this);
         this.rock = new MyRock(this,15,15);
         this.rockset = new MyRockSet(this,5);
@@ -248,7 +248,7 @@ export class MyScene extends CGFscene {
         this.popMatrix();
         this.setActiveShader(this.defaultShader);
         this.pushMatrix();
-        this.scale(0.2,0.2,0.2);
+     
         this.rock.display();
         this.popMatrix();
         this.pushMatrix();

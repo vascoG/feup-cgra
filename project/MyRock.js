@@ -46,15 +46,18 @@ export class MyRock extends CGFobject {
       theta = 0;
       for (let longitude = 0; longitude <= this.longDivs; longitude++) {
         //--- Vertices coordinates
+          if(longitude == this.longDivs) { 
+          var x = this.vertices[latitude*3*this.longDivs];
+          var y = this.vertices[latitude*3*this.longDivs+1];
+          var z = this.vertices[latitude*3*this.longDivs+2];
+          this.vertices.push(x,y,z);
+        }
+        else{
         var x = Math.cos(theta) * sinPhi;
         var y = cosPhi;
         var z = Math.sin(-theta) * sinPhi;
         var r = Math.random()*0.5;
-        if(longitude == this.longDivs) { 
-          this.vertices.push(this.vertices[latitude*this.longDivs*3],this.vertices[latitude*this.longDivs*3+1],this.vertices[latitude*this.longDivs*3+2]); 
-        }
-        else{
-           this.vertices.push(x+x*r, y+y*r, z+z*r);
+        this.vertices.push(x+x*r, y+y*r, z+z*r);
         }
        
         //--- Indices
