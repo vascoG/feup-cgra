@@ -13,6 +13,7 @@ export class MyRock extends CGFobject {
     this.longDivs = slices;
     this.x=Math.random()*50-25;
     this.z=Math.random()*50-25;
+    this.y = 0;
 
     this.random1 = Math.random();
     this.random2 = Math.random();

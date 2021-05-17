@@ -65,6 +65,11 @@ export class MyScene extends CGFscene {
         text+=" L ";
         keysPressed=true;
     }
+        if(this.gui.isKeyPressed("KeyC")){
+        this.updateRock();
+        text+=" C ";
+        keysPressed=true;
+    }
         if(keysPressed)
             console.log(text);
 
@@ -143,7 +148,7 @@ export class MyScene extends CGFscene {
         this.displayDefault = true;
         this.displayCylinder = false;
         this.displaySphere = false;
-        this.scaleFactor = 1.0;
+        this.scaleFactor = 2.0;
         this.speedFactor = 1.0;
         this.selectedTexture = 0;
 
@@ -181,6 +186,49 @@ export class MyScene extends CGFscene {
         this.mymovingfish.update(t);
         this.quadShader.setUniformsValues({ timeFactor: t / 100 % 100 });
     }
+
+    updateRock(){
+		if(!this.mymovingfish.caughtRock)
+			this.catchRock();
+	    else
+			this.dropRock();
+
+	}
+
+	catchRock(){
+    let minDistance = 1.5;
+
+        if(!(this.mymovingfish.myfish.y>1))
+        {
+            for(let i=0;i<this.rockset.number;i++)
+            {
+                let distance = Math.sqrt((this.mymovingfish.x-this.rockset.rocks[i].x)*(this.mymovingfish.x-this.rockset.rocks[i].x)+(this.mymovingfish.z-this.rockset.rocks[i].z)*(this.mymovingfish.z-this.rockset.rocks[i].z));
+                        if(distance<=minDistance)
+                        {   this.mymovingfish.caughtRock = true;
+                            minDistance = distance;
+                            this.mymovingfish.rock = this.rockset.rocks[i];
+                        }
+
+            }
+        }
+
+	}
+
+	dropRock(){
+    if(!(this.mymovingfish.myfish.y>1))
+    {
+        let distance = Math.sqrt((this.mymovingfish.x-this.myseafloor.nestX)*(this.mymovingfish.x-this.myseafloor.nestX)+(this.mymovingfish.z-this.myseafloor.nestZ)*(this.mymovingfish.z-this.myseafloor.nestZ));
+        if(distance <= this.myseafloor.nestRadius)
+            {
+                this.mymovingfish.caughtRock = false;
+                this.mymovingfish.rock.x = this.myseafloor.nestX;
+                this.mymovingfish.rock.z = this.myseafloor.nestZ;
+                this.mymovingfish.rock.y = -0.5;
+            }
+    }
+
+
+	}
 
     display() {
         // ---- BEGIN Background, camera and axis setup
@@ -248,7 +296,6 @@ export class MyScene extends CGFscene {
         this.setActiveShader(this.defaultShader);
         this.pushMatrix();
         this.rockset.display();
-        this.rock.display();
         this.popMatrix();
         this.pushMatrix();
         this.translate(-1,0,0);

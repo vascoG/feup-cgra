@@ -26,8 +26,8 @@ export class MySeaFloor extends CGFobject {
 	this.plane = new MyPlane(this.scene,20,0,1,0,1);
 
 	this.nestRadius = 5;
-	this.nestX = 0.85;
-	this.nextZ = 0.85;
+	this.nestX = 0.70*25;
+	this.nestZ = 0.75*25;
 	
 	}
 	display(){

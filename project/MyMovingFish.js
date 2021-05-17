@@ -9,6 +9,8 @@ export class MyMovingFish extends MyMovingObject{
 		this.myfish = new MyFish(this.scene,1,0,0,0.4);
 		this.up = false;
 		this.down = false;
+		this.caughtRock = false;
+		this.rock;
 	}
 
 	rotateRight(){
@@ -17,6 +19,7 @@ export class MyMovingFish extends MyMovingObject{
 	rotateLeft(){
 		this.myfish.rotateleft=true;
 	}
+
 
 	update(t)
 	{	if(this.myfish.y<=1)
@@ -31,6 +34,11 @@ export class MyMovingFish extends MyMovingObject{
 			this.myfish.y+=0.05;
 		if(this.down)
 			this.myfish.y-=0.05;
+		if(this.caughtRock){
+			this.rock.x = this.x+0.5*Math.sin(this.angle*Math.PI/180);
+			this.rock.z = this.z+0.5*Math.cos(this.angle*Math.PI/180);
+			this.rock.y = this.myfish.y;
+			}
 	}
 
 
