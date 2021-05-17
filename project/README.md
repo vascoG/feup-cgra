@@ -24,9 +24,24 @@
 
 ### 3 - Superfície da água
 
-
 ![Screenshot 3a](screenshots/proj-t2-g04-3a.png)
 ![Screenshot 3b](screenshots/proj-t2-g04-3b.png)
 ![Screenshot 3c](screenshots/proj-t2-g04-3c.png)
 
+### 4 - Pedras
 
+![Screenshot 4a](screenshots/proj-t2-g04-4a.png)
+![Screenshot 4b](screenshots/proj-t2-g04-4b.png)
+
+### 5 - MyPillar
+
+![Screenshot 5](screenshots/proj-t2-g04-5.png)
+
+### 6 - Outros elementos
+
+![Screenshot 6](screenshots/proj-t2-g04-6.png)
+
+### 7 - Recolher Pedras
+
+![Screenshot 7a](screenshots/proj-t2-g04-7a.png)
+![Screenshot 7b](screenshots/proj-t2-g04-7b.png)

@@ -12,6 +12,17 @@ export class MyRockSet extends CGFobject {
 		{
 			this.rocks.push(new MyRock(scene,20,20));
 		}
+		let x=0.70*21,z=0.75*21;
+		for( let j=0;j<this.number;j++){
+			if(z+1>=0.75*29){
+				z=0.75*21;
+				x+=1;
+			}else{
+				z+=1;
+			}
+			this.rocks[j].nestX=x;
+			this.rocks[j].nestZ=z;
+		}
 	}
 
 	display()

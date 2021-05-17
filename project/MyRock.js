@@ -14,12 +14,17 @@ export class MyRock extends CGFobject {
     this.x=Math.random()*50-25;
     this.z=Math.random()*50-25;
     this.y = 0;
+    this.nestX;
+    this.nestZ;
 
     this.random1 = Math.random();
     this.random2 = Math.random();
     this.random3 = Math.random();
 
     this.initBuffers();
+    this.initialX=this.x;
+    this.initialZ=this.z;
+    this.initialY=this.y;
   }
 
   /**

@@ -135,6 +135,9 @@ export class MyScene extends CGFscene {
         this.sphereAppearance.loadTexture('images/earth.jpg');
         this.sphereAppearance.setTextureWrap('REPEAT', 'REPEAT');
 
+        this.rockTexture = new CGFappearance(this);
+		//this.rockTexture.loadTexture("images/rockTexture.jpg");
+
         this.distorcionTexture = new CGFtexture(this, "images/distortionmap.png");
         this.quadTexture = new CGFtexture(this, "images/pier.jpg");
         this.quadShader = new CGFshader(this.gl, "shaders/distorcion.vert","shaders/distorcion.frag");
@@ -221,8 +224,8 @@ export class MyScene extends CGFscene {
         if(distance <= this.myseafloor.nestRadius)
             {
                 this.mymovingfish.caughtRock = false;
-                this.mymovingfish.rock.x = this.myseafloor.nestX;
-                this.mymovingfish.rock.z = this.myseafloor.nestZ;
+                this.mymovingfish.rock.x = this.mymovingfish.rock.nestX
+                this.mymovingfish.rock.z = this.mymovingfish.rock.nestZ;
                 this.mymovingfish.rock.y = -0.5;
             }
     }
@@ -295,6 +298,7 @@ export class MyScene extends CGFscene {
         this.popMatrix();
         this.setActiveShader(this.defaultShader);
         this.pushMatrix();
+        this.rockTexture.apply();
         this.rockset.display();
         this.popMatrix();
         this.pushMatrix();

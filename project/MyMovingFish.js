@@ -20,7 +20,19 @@ export class MyMovingFish extends MyMovingObject{
 		this.myfish.rotateleft=true;
 	}
 
-
+	reset(){
+		this.velocity=0;
+		this.angle=0;
+		this.x=0;
+		this.y=0;
+		this.z=0;
+		if(this.caughtRock){
+			this.caughtRock=false;
+			this.rock.x = this.rock.initialX;
+			this.rock.z = this.rock.initialZ;
+			this.rock.y = this.rock.initialY;
+		}
+	}
 	update(t)
 	{	if(this.myfish.y<=1)
 			this.down = false;
