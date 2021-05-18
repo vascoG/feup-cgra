@@ -17,6 +17,11 @@ export class MyRock extends CGFobject {
     this.nestX;
     this.nestZ;
 
+    this.falling = false;
+    this.incrementX;
+    this.incrementY;
+    this.incrementZ;
+
     this.random1 = Math.random();
     this.random2 = Math.random();
     this.random3 = Math.random();

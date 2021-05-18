@@ -64,9 +64,10 @@ export class MyFish extends CGFobject {
 	this.scene.popMatrix();
 
 	this.scene.pushMatrix();
+	this.scene.translate(0.172,0,0);
 	if(!this.rotateleft)
 		this.scene.rotate(this.angleFin*Math.PI/180,0,0,1);
-	this.scene.translate(0.175,-0.1,-0.1);
+	this.scene.translate(0.03,-0.1,-0.1);
 	this.scene.scale(0.1,0.1,0.1);
 	this.scene.rotate(Math.PI/8,0,0,1);
 	this.scene.rotate(Math.PI/2,0,1,0);
@@ -75,9 +76,10 @@ export class MyFish extends CGFobject {
 	this.scene.popMatrix();
 	
 	this.scene.pushMatrix();
+	this.scene.translate(-0.172,0,0);
     if(!this.rotateright)
 		this.scene.rotate(-this.angleFin*Math.PI/180,0,0,1);
-	this.scene.translate(-0.175,-0.1,-0.1);
+	this.scene.translate(-0.03,-0.1,-0.1);
 	this.scene.scale(0.1,0.1,0.1);
 	this.scene.rotate(-Math.PI/8,0,0,1);
 	this.scene.rotate(Math.PI/2,0,1,0);
@@ -94,8 +96,9 @@ export class MyFish extends CGFobject {
 	this.scene.popMatrix();
 
 	this.scene.pushMatrix();
-	this.scene.rotate(this.angleTail*Math.PI/180,0,1,0);
-	this.scene.translate(0,0,-0.45);
+	this.scene.translate(0,0,-0.24);
+	this.scene.rotate(-this.angleTail*Math.PI/180,0,1,0);
+	this.scene.translate(0,0,-0.21);
 	this.scene.scale(0.15,0.15,0.15);
 	this.scene.rotate(-Math.PI/4,1,0,0);
 	this.scene.rotate(Math.PI/2,0,1,0);

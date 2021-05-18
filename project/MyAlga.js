@@ -7,10 +7,10 @@ export class MyAlga extends CGFobject {
 constructor(scene)
 {
 	super(scene);
-
-	this.alga = new MyPyramid(this.scene,15,15);
+	this.alga = new MyPyramid(this.scene,5,5);
 	this.algaTexture = new CGFappearance(this.scene);
-	this.algaTexture.setColor(0.4,0.8,0,1);
+	this.random = Math.random()*0.5;
+	this.algaTexture.setColor(this.random,this.random+0.5,this.random,1);
 	this.random1 = Math.random()*0.1+0.05;
 	this.random2 = Math.random()*0.2+0.1;
 	this.random3 = Math.random()+1;

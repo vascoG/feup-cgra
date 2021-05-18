@@ -47,10 +47,27 @@ export class MyMovingFish extends MyMovingObject{
 		if(this.down)
 			this.myfish.y-=0.05;
 		if(this.caughtRock){
+			if(this.rock.falling)
+			{
+				if(this.rock.y<=-0.5)
+					{
+					this.rock.falling = false;
+					this.caughtRock = false;
+					}
+				else
+					{
+						this.rock.x+=this.rock.incrementX;
+						this.rock.y+=this.rock.incrementY;
+						this.rock.z+=this.rock.incrementZ;
+					}
+			}
+			else
+			{
 			this.rock.x = this.x+0.5*Math.sin(this.angle*Math.PI/180);
 			this.rock.z = this.z+0.5*Math.cos(this.angle*Math.PI/180);
 			this.rock.y = this.myfish.y;
 			}
+		}
 	}
 
 

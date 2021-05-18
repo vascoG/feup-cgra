@@ -3,15 +3,18 @@ import {MyAlga } from './MyAlga.js';
 
 
 export class MyAlgaSet extends CGFobject {
-	constructor(scene, number)
+	constructor(scene)
 	{
 		super(scene);
-		this.number = number;
+		this.number = Math.floor(Math.random()*10)+2;
 		this.algas = [];
 		for(let i=0;i<this.number;i++)
 		{
-			this.algas.push(new MyAlga(scene,20,20));
+			this.algas.push(new MyAlga(scene));
 		}
+		this.random1 = -50*Math.random()+25;
+		this.random2 = -50*Math.random()+25;
+
 	}
 
 	display()

@@ -13,6 +13,8 @@ import {MyAlga} from "./MyAlga.js";
 import {MyAlgaSet} from "./MyAlgaSet.js";
 import {MyMovingFish} from "./MyMovingFish.js";
 import {MyAnimatedFish} from "./MyAnimatedFish.js";
+import {CGFcamera2} from "./CGFcamera2.js";
+import {MyVegetacao} from "./MyVegetacao.js";
 
 /**
 * MyScene
@@ -110,15 +112,13 @@ export class MyScene extends CGFscene {
         this.watercubemap = new MyCubeMap(this,'images/underwater_cubemap/top.jpg','images/underwater_cubemap/bottom.jpg','images/underwater_cubemap/left.jpg','images/underwater_cubemap/right.jpg','images/underwater_cubemap/front.jpg','images/underwater_cubemap/back.jpg')
         this.quad = new MyQuad(this);
         this.rock = new MyRock(this,15,15);
-        this.rockset = new MyRockSet(this,10);
+        this.rockset = new MyRockSet(this,25);
         this.pillar1 = new MyPillar(this);
         this.pillar2 = new MyPillar(this);
         this.pillar3 = new MyPillar(this);
         this.pillar4 = new MyPillar(this);
-        this.algas1 = new MyAlgaSet(this,5);
-        this.algas2 = new MyAlgaSet(this,3);
-        this.algas3 = new MyAlgaSet(this,8);
-        this.algas4 = new MyAlgaSet(this,6);
+        this.algas = new MyVegetacao(this,30);
+
         this.myanimatedfish = new MyAnimatedFish(this,0.25,0.7,0.65,0.3,0,0,10);
         this.myanimatedfish2 = new MyAnimatedFish(this,1,0.65,0,0.3,-10,-12,5);
 
@@ -173,7 +173,7 @@ export class MyScene extends CGFscene {
         this.lights[0].update();
     }
     initCameras() {
-        this.camera = new CGFcamera(1.7, 0.1, 500, vec3.fromValues(2, 2, 2), vec3.fromValues(0, 2, 0));
+        this.camera = new CGFcamera2(1.7, 0.1, 500, vec3.fromValues(2, 2, 2), vec3.fromValues(0, 2, 0));
     }
 
 
@@ -232,6 +232,16 @@ export class MyScene extends CGFscene {
                 this.mymovingfish.rock.z = this.mymovingfish.rock.nestZ;
                 this.mymovingfish.rock.y = -0.5;
             }
+    }
+    else if(this.mymovingfish.myfish.y>=4)
+    {   let distance = Math.sqrt((this.mymovingfish.x-this.myseafloor.nestX)*(this.mymovingfish.x-this.myseafloor.nestX)+(this.mymovingfish.z-this.myseafloor.nestZ)*(this.mymovingfish.z-this.myseafloor.nestZ));
+        if(distance <= this.myseafloor.nestRadius+5)
+        {
+        this.mymovingfish.rock.falling = true;
+        this.mymovingfish.rock.incrementX = (this.mymovingfish.rock.nestX - this.mymovingfish.rock.x )/40;
+        this.mymovingfish.rock.incrementY = (-0.5 - this.mymovingfish.rock.y )/40;
+        this.mymovingfish.rock.incrementZ = (this.mymovingfish.rock.nestZ - this.mymovingfish.rock.z )/40;
+        }
     }
 
 
@@ -328,36 +338,7 @@ export class MyScene extends CGFscene {
         this.pillar4.display();
         this.popMatrix();
         this.pushMatrix();
-        this.translate(-5,0,0);
-        this.algas1.display();
-        this.popMatrix();
-        this.pushMatrix();
-        this.translate(-10,0,-3);
-        this.algas2.display();
-        this.popMatrix();
-        this.pushMatrix();
-        this.translate(-2,0,-12);
-        this.algas3.display();
-        this.popMatrix();
-        this.pushMatrix();
-        this.translate(0,0,-8);
-        this.algas4.display();
-        this.popMatrix();
-        this.pushMatrix();
-        this.translate(15,0,2);
-        this.algas1.display();
-        this.popMatrix();
-        this.pushMatrix();
-        this.translate(5,0,10);
-        this.algas2.display();
-        this.popMatrix();
-        this.pushMatrix();
-        this.translate(5,0,-7);
-        this.algas3.display();
-        this.popMatrix();
-        this.pushMatrix();
-        this.translate(12,0,2);
-        this.algas4.display();
+        this.algas.display();
         this.popMatrix();
         // ---- END Primitive drawing section
     }
