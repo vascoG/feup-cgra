@@ -12,6 +12,7 @@ import {MyPillar} from "./MyPillar.js";
 import {MyAlga} from "./MyAlga.js";
 import {MyAlgaSet} from "./MyAlgaSet.js";
 import {MyMovingFish} from "./MyMovingFish.js";
+import {MyAnimatedFish} from "./MyAnimatedFish.js";
 
 /**
 * MyScene
@@ -118,7 +119,8 @@ export class MyScene extends CGFscene {
         this.algas2 = new MyAlgaSet(this,3);
         this.algas3 = new MyAlgaSet(this,8);
         this.algas4 = new MyAlgaSet(this,6);
-        
+        this.myanimatedfish = new MyAnimatedFish(this,0.25,0.7,0.65,0.3,0,0,10);
+        this.myanimatedfish2 = new MyAnimatedFish(this,1,0.65,0,0.3,-10,-12,5);
 
         this.defaultAppearance = new CGFappearance(this);
 		this.defaultAppearance.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -187,6 +189,8 @@ export class MyScene extends CGFscene {
         //To be done...
         this.checkKeys();
         this.mymovingfish.update(t);
+        this.myanimatedfish.update(t);
+        this.myanimatedfish2.update(t);
         this.quadShader.setUniformsValues({ timeFactor: t / 100 % 100 });
     }
 
@@ -280,6 +284,12 @@ export class MyScene extends CGFscene {
           */  
         this.pushMatrix();
         this.mymovingfish.display();
+        this.popMatrix();
+        this.pushMatrix();
+        this.myanimatedfish.display();
+        this.popMatrix();
+        this.pushMatrix();
+        this.myanimatedfish2.display();
         this.popMatrix();
         this.pushMatrix();
         this.myseafloor.display();
