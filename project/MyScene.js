@@ -147,12 +147,8 @@ export class MyScene extends CGFscene {
 	    this.quadShader.setUniformsValues({ uSampler2: 4 });
 
         //Objects connected to MyInterface
-        this.displayAxis = true;
-        this.displayMovingObject = true;
-        this.displayMars = false;
+        this.displayAxis = false;
         this.displayDefault = true;
-        this.displayCylinder = false;
-        this.displaySphere = false;
         this.scaleFactor = 2.0;
         this.speedFactor = 1.0;
         this.selectedTexture = 0;
