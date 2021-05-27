@@ -138,7 +138,6 @@ export class MyScene extends CGFscene {
         this.sphereAppearance.setTextureWrap('REPEAT', 'REPEAT');
 
         this.rockTexture = new CGFappearance(this);
-		//this.rockTexture.loadTexture("images/rockTexture.jpg");
 
         this.distorcionTexture = new CGFtexture(this, "images/distortionmap.png");
         this.quadTexture = new CGFtexture(this, "images/pier.jpg");

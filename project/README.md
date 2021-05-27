@@ -2,6 +2,9 @@
 
 ## Group T02G04
 
+- Mariana Monteiro - up202003480
+- Vasco Gomes - up201906617
+
 ## Project Notes
 
 
