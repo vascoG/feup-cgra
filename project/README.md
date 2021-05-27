@@ -4,10 +4,14 @@
 
 ## Project Notes
 
-(add your main observations/remarks about your experiments here, in a bulleted list, and remove this line. Some examples below)
 
-- In exercise 1 we observed X
-- In exercise 2 we had difficulties in Y
+- As funcionalidades adicionais que implementamos foram:
+  - 7.1 - Algas;
+  - 7.4 - Lançamento das pedras para o alvo;
+  - 7.5 - MyAnimatedFish - Animação de outros peixes.
+- As maiores dificuldades sentidas ao longo da realização do projeto foram:
+  - O fundo de areia com o ninho
+  - As pedras
 
 
 ## Screenshots
@@ -45,3 +49,11 @@
 
 ![Screenshot 7a](screenshots/proj-t2-g04-7a.png)
 ![Screenshot 7b](screenshots/proj-t2-g04-7b.png)
+![Screenshot 7c](screenshots/proj-t2-g04-7c.png)
+
+### 8 - Funcionalidades Adicionais
+
+![Screenshot 8a](screenshots/proj-t2-g04-8a.png)
+![Screenshot 8b](screenshots/proj-t2-g04-8b.png)
+![Screenshot 8c](screenshots/proj-t2-g04-8c.png)
+![Screenshot 8d](screenshots/proj-t2-g04-dc.png)
