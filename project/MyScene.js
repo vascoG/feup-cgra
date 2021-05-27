@@ -269,29 +269,6 @@ export class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
         
-        /*
-        this.pushMatrix();
-        this.translate(this.mymovingobject.x,this.mymovingobject.y,this.mymovingobject.z);
-        this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
-            this.rotate(this.mymovingobject.angle*Math.PI/180,0,1,0);
-        if(this.displayMovingObject)
-            this.mymovingobject.display();
-        this.popMatrix();
-        this.pushMatrix();
-        this.translate(this.camera.position[0],this.camera.position[1],this.camera.position[2]);
-        this.scale(500,500,500);
-        this.objects[this.selectedTexture].display();
-        this.popMatrix();
-
-        this.pushMatrix();
-        this.sphereAppearance.apply();
-        if(this.displayCylinder)
-            this.mycylinder.display();
-        this.popMatrix();
-        //This sphere does not have defined texture coordinates
-        if(this.displaySphere) 
-            this.incompleteSphere.display();
-          */  
         this.pushMatrix();
         this.mymovingfish.display();
         this.popMatrix();

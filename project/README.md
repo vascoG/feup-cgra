@@ -56,4 +56,4 @@
 ![Screenshot 8a](screenshots/proj-t2-g04-8a.png)
 ![Screenshot 8b](screenshots/proj-t2-g04-8b.png)
 ![Screenshot 8c](screenshots/proj-t2-g04-8c.png)
-![Screenshot 8d](screenshots/proj-t2-g04-dc.png)
+![Screenshot 8d](screenshots/proj-t2-g04-8d.png)
